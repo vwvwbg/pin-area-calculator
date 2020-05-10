@@ -187,10 +187,10 @@ for key,value in c_list.items():
 
 
 with open(out_file,'w') as outfile:
+    outfile.write("******************************\n")
+    outfile.write("def file = : "+def_file+"\n")
+    outfile.write("width file = : "+width_file+"\n")
     for key,value in c_list.items():
-        outfile.write("******************************\n")
-        outfile.write("def file = : "+def_file+"\n")
-        outfile.write("width file = : "+width_file+"\n")
         outfile.write("******************************\n")
         outfile.write(value.name+"\n")
         outfile.write(value.type+"\n")
@@ -198,8 +198,16 @@ with open(out_file,'w') as outfile:
         outfile.write("Cell pin area = :")
         outfile.write(str(value.pin_total_area)+"\n")
         outfile.write("******************************\n")
+    outfile.write("Cell with one/zero pin \n")
+    for key,value in c_list.items():
+        outfile.write("******************************\n")
+        outfile.write(value.name+"\n")
+        outfile.write(value.type+"\n")
+        outfile.write(str(value.pin)+"\n")
+        outfile.write("******************************\n")
     outfile.write("Chip total pin area = :")
     outfile.write(str(chip_pin_area)+"\n")
     outfile.write("******************************\n")
+
     outfile.write("EOF")
 
