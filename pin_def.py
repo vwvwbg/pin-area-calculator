@@ -35,22 +35,23 @@ class Components():
             x2 = self.pin[i+1][1]
             y1 = self.pin[i][2]
             y2 = self.pin[i+1][2]
-            if (x1 == x2) or (y1 == y2):
+            if (x1 == x2) :
                 pin_area = 0
+                pin_area = (288) * (abs(y1-y2)+288)/16000000
             elif y1 > y2:
                 x1 = x1 - 144
                 y1 = y1 + 144
                 x2 = x2 + 144
                 y2 = y2 - 144
-                pin_area = (x2-x1) * (y1-y2)
-            elif y1 < y2:
+                pin_area = (x2-x1) * (y1-y2)/16000000
+            elif y1 <= y2:
                 x1 = x1 - 144
                 y1 = y1 - 144
                 x2 = x2 + 144
                 y2 = y2 + 144
-                pin_area = (x2-x1) * (y2-y1)
+                pin_area = (x2-x1) * (y2-y1)/16000000
             self.pin_total_area += pin_area
-        return int(self.pin_total_area)
+        return float(self.pin_total_area)
 
                 
 
